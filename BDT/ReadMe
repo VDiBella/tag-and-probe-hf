@@ -1,0 +1,10 @@
+In order to prepare the different BDT you will first need to prepare the Data used in the training.
+
+For that you need to use the line : 
+python3 prepare_samples.py config_preparation_DplusToPiKPi.yml
+
+After that you can do the training with : 
+python3 ML_Training.py training_config_DplusToPiKPi.yml
+
+If you want to a preselection different for the differents Pt bins you will need to train several BDT, one for each Pt bin.
+Be carefull to save the BDT model in different folder if you do that, or you will erase the last one.

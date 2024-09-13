@@ -1,0 +1,41 @@
+---
+channel: DplusToPiKPi
+labels: # class labels, keep the right number of classes
+  [
+    Bkg, # check that the background class position in this list matches ID_BKG value in the script
+    Signal,
+  ]
+col_tag: &col_tag fIsSignal # name of the column containing the candidate label tag
+
+prepare_samples:
+  input:
+    files: # list of input .root files
+      [
+        #Input_Preparation/Background_MC_old/Background_MC_old.root
+        Input_Preparation/Background_MC/Background_MC.root
+      ]
+    tree_name: O2tagtopovariable
+
+preselections: # null or list of selections (e.g. [fCpa > 0.95, fPt > 2]) linked by "&&" logic in the script
+  [
+    fTagPt > 1,
+    fTagPt < 2,
+    fDecayLengthXYNormalised > 3,
+    fDecayLengthXY > 0.03,
+    fDecayLength > 0.03,
+    fCpa > 0.8,
+    fCpaXY > 0.6
+  ] 
+cols_to_remove: # list of columns to remove in the output, default entry is MC origin flag
+  [
+    *col_tag
+  ]
+filt_bkg_mass: "fTagInvMass > -10000.25" #|| fTagInvMass > 1.8" # invariant mass sidebands for Bkg labeling
+
+output:
+  dirs: # list of paths of output directories (without trailing slash)
+    [
+      #Training_Input/Background_MC_old/pt8-1000
+      Training_Input/Background_MC/pt1-2
+    ]
+  tree_name: treeMLDplus # tree name in the output files
