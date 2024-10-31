@@ -8,7 +8,7 @@ There is files for MC data and file for real data.
 
 There is no input file to put in the command line, so each code is launch with :
 root name_of_code.C
-Exepct of course for the Fitter one who is launch with :
+Except of course for the Fitter one who is launch with :
 python3 Fitter_Inv_Mass.py
 
 The input file are decide at the begining of the codes.
